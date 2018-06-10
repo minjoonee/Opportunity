@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.leetaekbin.app_bluetooth">
+
+
+    // 블루투스 설정시 이 두가지 선언이 꼭필요함 순서고려!!
+    // Bluetooth : 블루투스 통신을 위한 권한 :: 연결요청, 연결 수락, 데이터 전송
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    //디바이스 디스커버리나 장치 설정들을 할 수있는 권한 :: 기기 검색기능 ADMIN권한를 사용하기위해서는
+    //  위에 선언한 BLUETOOTH 권한도 필요함
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

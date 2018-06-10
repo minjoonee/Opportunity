@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="pl.hypeapp.endoscope">
+    // 블루투스 설정시 이 두가지 선언이 꼭필요함 순서고려!!
+    // Bluetooth : 블루투스 통신을 위한 권한 :: 연결요청, 연결 수락, 데이터 전송
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    //디바이스 디스커버리나 장치 설정들을 할 수있는 권한 :: 기기 검색기능 ADMIN권한를 사용하기위해서는
+    //  위에 선언한 BLUETOOTH 권한도 필요함
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true"/>
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="true"/>
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="false"/>
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.NFC"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/timg2"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/App.Theme">
+        <activity
+            android:name="pl.hypeapp.endoscope.ui.activity.MainMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="pl.hypeapp.endoscope.ui.activity.SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="pl.hypeapp.endoscope.ui.activity.ConnectToStreamActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name="pl.hypeapp.endoscope.ui.activity.StartStreamActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+
+        </activity>
+        <activity
+            android:name="pl.hypeapp.endoscope.ui.activity.SettingsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="pl.hypeapp.endoscope.ui.activity.HowToUseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="pl.hypeapp.endoscope.ui.activity.PlayStreamActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/App.Theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <service android:name="net.majorkernelpanic.streaming.rtsp.RtspServer"/>
+
+    </application>
+
+</manifest>
